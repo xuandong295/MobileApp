@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MVVM_LoginPage.ViewModel"
+             x:Class="MVVM_LoginPage.View.CreateAccountPage" 
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="Background5.jpg">
+    <ContentPage.BindingContext>
+        <vm:CreateAccountViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="CREATE ACCOUNT" TextColor="Black" HorizontalOptions="StartAndExpand" FontSize="Title" FontAttributes="Bold" Margin="30,70,0,0"/>
+            <Entry x:Name="cre_userNameEntry" Text="{Binding cre_Username}" TextColor="Black" Placeholder="User Name" PlaceholderColor="Black" Margin="10,10"></Entry>
+            <Entry x:Name="cre_passwordEntry" Text="{Binding cre_Password}" Placeholder="Password" TextColor="Black"  PlaceholderColor="Black"  Margin="10,10" IsPassword="True"></Entry>
+            <Entry x:Name="cre_rePasswordEntry" TextColor="Black" Text="{Binding cre_RePassword}" Placeholder="Re-password"  PlaceholderColor="Black"  Margin="10,10" IsPassword="True"></Entry>
+            <Label x:Name="CreateMessageLabel" TextColor="Black" Text="{Binding CreateMessage, Mode=OneWay}" IsVisible="{Binding TurnCreateMessage, Mode=OneWay}" Margin="10,0,0,0"/>
+            <Button x:Name="CreateButton" Text="CREATE" TextColor="White" BackgroundColor="CadetBlue" Margin="10,10,10,10"
+                    Command="{Binding cmdCreate}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

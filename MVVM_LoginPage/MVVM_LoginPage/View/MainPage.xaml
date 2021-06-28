@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:MVVM_LoginPage.ViewModel" 
+             xmlns:local="clr-namespace:MVVM_LoginPage.Services"
+             x:Class="MVVM_LoginPage.View.MainPage" 
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="Background3.jpg">
+
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        
+        <StackLayout>
+
+            <Label Text="REMOTE CONTROL" TextColor="Black" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold" Margin="25,25,30,20"/>
+            <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}" HorizontalOptions="Center" FontSize="Subtitle" Margin="-5,-10"></Label>
+            <Label Text="{Binding Time, StringFormat='{}{0:hh\\:mm}'}" HorizontalOptions="CenterAndExpand" FontSize="Title"></Label>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Text="LED1" TextColor="Black" Margin="90,30,10,10" FontSize="Medium" />
+                <Label Grid.Column="0" Grid.Row="1" Text="LED2" TextColor="Black" Margin="90,30,10,10" FontSize="Medium"/>
+                <Label Grid.Column="0" Grid.Row="2" Text="LED3" TextColor="Black" Margin="90,30,10,10" FontSize="Medium"/>
+                <Label Grid.Column="0" Grid.Row="3" Text="LED4" TextColor="Black" Margin="90,30,10,10" FontSize="Medium"/>
+                <Button x:Name="LED1" BorderRadius="15" BorderWidth="2" Text="{Binding Led1}" Margin="10,20,10,10"
+                    Command="{Binding cmdLed1}" BackgroundColor="{Binding Color1Background}" TextColor="Snow" Grid.Column="1" Grid.Row="0" HorizontalOptions="Start" />
+                <Button x:Name="LED2" BorderRadius="15"  BorderWidth="2" Text="{Binding Led2}" Margin="10,20,10,10"
+                    Command="{Binding cmdLed2}" BackgroundColor="{Binding Color2Background}" TextColor="Snow" Grid.Column="1" Grid.Row="1" HorizontalOptions="Start"/>
+
+                <Button x:Name="LED3"  BorderRadius="15" BorderWidth="2" Text="{Binding Led3}" Margin="10,20,10,10"
+                    Command="{Binding cmdLed3}" BackgroundColor="{Binding Color3Background}" TextColor="Snow" Grid.Column="1" Grid.Row="2" HorizontalOptions="Start"/>
+
+                <Button x:Name="LED4"  BorderRadius="15" BorderWidth="2" Text="{Binding Led4}" Margin="10,20,10,10"
+                    Command="{Binding cmdLed4}" BackgroundColor="{Binding Color4Background}" TextColor="Snow" Grid.Column="1" Grid.Row="3" HorizontalOptions="Start"/>
+                <Button x:Name="CONTROLALL"  BorderRadius="15" BorderWidth="2" Text="{Binding LedAll}" Margin="10,10,10,10" TranslationX="140" TranslationY="345" 
+                    Command="{Binding cmdControlAll}" BackgroundColor="{Binding ColorAllBackground}" TextColor="Snow" HorizontalOptions="Start"/>
+                
+            </Grid>
+            <Button x:Name="VoiceRemote" Text="Voice" Margin="10,10,10,10" HorizontalOptions="EndAndExpand"
+                    Command="{Binding cmdStartSpeech}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
